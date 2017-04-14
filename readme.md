@@ -1,6 +1,6 @@
-# Web API Skeleton
+# Advising Notes API
 
-Skeleton for Dropwizard Web APIs.
+Get advising notes about students.
 
 ### Generate Keys
 
