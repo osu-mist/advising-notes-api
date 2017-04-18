@@ -25,6 +25,11 @@ paths:
           required: true
           description: "OSU ID of Student"
           type: string
+        - in: query
+          name: dataSource
+          required: false
+          description: "Filter by source of advising notes."
+          type: string
         - $ref: '#/parameters/pretty'
       responses:
         "200":
@@ -113,12 +118,15 @@ definitions:
       school:
         type: string
         description: School attributed to note
-      degree:
+      degreeType:
         type: string
-        description: Degree attributed to note
+        description: Ex. BA or BS
       note:
         type: string
         description: Content of note
+      dataSource:
+        type: string 
+        description: Data source of note
   Links:
     properties:
       self:
