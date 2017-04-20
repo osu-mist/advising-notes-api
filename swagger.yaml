@@ -25,12 +25,28 @@ paths:
           required: true
           description: "OSU ID of Student"
           type: string
+        - in: query
+          name: includeSource
+          required: false
+          description: "Include specific data source of notes."
+          type: string
+          collectionFormat: multi
+        - in: query
+          name: excludeSource
+          required: false
+          description: "Exclude specific data source of notes."
+          type: string
+          collectionFormat: multi
         - $ref: '#/parameters/pretty'
       responses:
         "200":
           description: "Successful response"
           schema:
             $ref: '#/definitions/ResultObject'
+        "400":
+          description: "Bad Request. Invalid data source specified, or a specific data source was given in both includeSource and excludeSource parameters."
+          schema:
+            $ref: "#/definitions/Error"
         "404":
           description: "Resource not found"
           schema:
@@ -113,12 +129,15 @@ definitions:
       school:
         type: string
         description: School attributed to note
-      degree:
+      degreeType:
         type: string
-        description: Degree attributed to note
+        description: Ex. BA or BS
       note:
         type: string
         description: Content of note
+      dataSource:
+        type: string 
+        description: Data source of note
   Links:
     properties:
       self:
